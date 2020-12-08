@@ -87,14 +87,12 @@ const StyledWatchTrailerv2 = styled.div`
     min-width: 40%;
     margin: 1.5%;
     text-align: center;
-    max-height: 90%;
   }
 
   .cast-container {
     display: flex;
     overflow-y: hidden;
     width: 100%;
-    height: 39vh;
   }
 
   img {
