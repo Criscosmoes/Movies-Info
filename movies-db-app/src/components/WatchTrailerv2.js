@@ -78,7 +78,6 @@ const StyledWatchTrailerv2 = styled.div`
   }
 
   p {
-    max-height: 20vh;
     overflow-x: auto;
     line-height: 1.4;
   }
@@ -87,16 +86,18 @@ const StyledWatchTrailerv2 = styled.div`
     min-width: 40%;
     margin: 1.5%;
     text-align: center;
+    margin: 2%; 
   }
 
   .cast-container {
     display: flex;
     overflow-y: hidden;
     width: 100%;
+
   }
 
   img {
-    min-height: 70%;
+    /* min-height: 70%; */
     -moz-box-shadow: 5px 5px 40px black;
     -webkit-box-shadow: 5px 5px 40px black;
     box-shadow: 10px 10px 30px black;
