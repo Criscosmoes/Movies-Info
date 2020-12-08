@@ -148,6 +148,10 @@ const StyledWatchTrailerv2 = styled.div`
     width: 15rem;
     height: 15rem;
   }
+
+  .space {
+    height: 4vh; 
+  }
 `;
 
 const WatchTrailerv2 = ({ trailerId, currentMovie, cast, providers }) => {
@@ -259,6 +263,7 @@ const WatchTrailerv2 = ({ trailerId, currentMovie, cast, providers }) => {
           renderedCast
         )}
       </div>
+      <div className="space"></div>
       {providers  && providers.US && providers.US.flatrate ? (
         <div>
           {" "}
