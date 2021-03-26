@@ -1,6 +1,5 @@
 import moviesDB from "../apis/moviesDB";
 import youtube from "../apis/youtube";
-import { keys } from '../keys'; 
 
 
 export const fetchMovies = (name, endpoint, query) => async (dispatch) => {
@@ -11,7 +10,7 @@ export const fetchMovies = (name, endpoint, query) => async (dispatch) => {
   if (query === undefined) {
     const response = await moviesDB.get(endpoint, {
       params: {
-        api_key: keys.movies_db_key,
+        api_key: '2d241abde6516d29ca9254c83e3cfc34',
       },
     });
 
@@ -31,7 +30,7 @@ export const fetchMovies = (name, endpoint, query) => async (dispatch) => {
   } else if (query !== undefined) {
     const response = await moviesDB.get(endpoint, {
       params: {
-        api_key: keys.movies_db_key,
+        api_key: '2d241abde6516d29ca9254c83e3cfc34',
         query: query,
       },
     });
@@ -64,13 +63,13 @@ export const fetchTrailers = (id, obj) => async (dispatch) => {
   try {
     const response = await moviesDB.get(`movie/${id}/videos`, {
       params: {
-        api_key: keys.movies_db_key,
+        api_key: '2d241abde6516d29ca9254c83e3cfc34',
       },
     });
 
     const cast = await moviesDB.get(`movie/${id}/credits`, {
       params: {
-        api_key: keys.movies_db_key,
+        api_key: '2d241abde6516d29ca9254c83e3cfc34',
       },
     });
 
@@ -82,7 +81,7 @@ export const fetchTrailers = (id, obj) => async (dispatch) => {
           q: `${title} trailer`,
           part: "snippet",
           maxResults: 5,
-          key: keys.youtube_api_key,
+          key: 'AIzaSyB_X4ltuzH_OIU2QqHv3IsOXDbr-FWn8Do',
         },
       });
 
@@ -117,7 +116,7 @@ export const fetchTrailers = (id, obj) => async (dispatch) => {
         q: `${title} trailer`,
         part: "snippet",
         maxResults: 5,
-        key: keys.youtube_api_key,
+        key: 'AIzaSyB_X4ltuzH_OIU2QqHv3IsOXDbr-FWn8Do',
       },
     });
 
@@ -178,23 +177,17 @@ export const exampleTrailers = (id, movie) => async (dispatch) => {
     // fectch trailers
     const trailers = await moviesDB.get(`/movie/${id}/videos`, {
       params: {
-        api_key: keys.movies_db_key,
+        api_key: '2d241abde6516d29ca9254c83e3cfc34',
       },
     });
 
     //fetch cast
     const cast = await moviesDB.get(`/movie/${id}/credits`, {
       params: {
-        api_key: keys.movies_db_key,
+        api_key: '2d241abde6516d29ca9254c83e3cfc34',
       },
     });
 
-    //fetch watch provider
-    const providers = await moviesDB.get(`/movie/${id}/watch/providers`, {
-      params: {
-        api_key: keys.movies_db_key, 
-      }
-    })
 
     if (trailers.data.results.length === 0) {
       //make youtube call also
@@ -203,7 +196,7 @@ export const exampleTrailers = (id, movie) => async (dispatch) => {
           q: `${movie.original_name || movie.original_title || movie.title} trailer`,
           part: "snippet",
           maxResults: 5,
-          key: keys.youtube_api_key,
+          key: 'AIzaSyB_X4ltuzH_OIU2QqHv3IsOXDbr-FWn8Do',
         },
       });
 
@@ -214,7 +207,6 @@ export const exampleTrailers = (id, movie) => async (dispatch) => {
           trailersId: youtubeResponse.data.items[0].id.videoId, 
           currentMovie: movie, 
           cast: cast.data.cast, 
-          providers: providers.data.results, 
         }
       })
 
@@ -227,7 +219,6 @@ export const exampleTrailers = (id, movie) => async (dispatch) => {
         trailersId: trailers.data.results[0].key, 
         currentMovie: movie, 
         cast: cast.data.cast,
-        providers: providers.data.results
       }
     })
 
@@ -239,7 +230,7 @@ export const exampleTrailers = (id, movie) => async (dispatch) => {
         q: `${movie.original_name || movie.original_title || movie.title} trailer`,
         part: "snippet",
         maxResults: 5,
-        key: keys.youtube_api_key,
+        key: 'AIzaSyB_X4ltuzH_OIU2QqHv3IsOXDbr-FWn8Do',
       },
     });
 

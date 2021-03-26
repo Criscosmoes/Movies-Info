@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const StyledSpinner = styled.div`
   & {
-    height: 40vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,16 +14,44 @@ const StyledSpinner = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 50%;
+    width: 30%;
   }
 
   .loading-circle {
     display: block;
-    width: 2rem;
-    height: 2rem;
-    background: black;
+    width: 5rem;
+    height: 5rem;
+    background: white;
     border-radius: 50%;
   }
+
+
+
+  
+
+  @media (max-width: 500px){
+
+    .circle-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 50%;
+    }
+
+    .loading-circle {
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      background: white;
+      border-radius: 50%;
+    }
+
+
+
+  }
+
+
+
 `;
 
 const loadingContainerVariants = {

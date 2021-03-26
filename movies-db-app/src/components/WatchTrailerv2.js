@@ -2,156 +2,326 @@ import React from "react";
 import styled from "styled-components";
 
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
+
+import { FaPlay } from "react-icons/fa";
+
+import { Link } from "react-scroll"; 
 
 const StyledWatchTrailerv2 = styled.div`
-  * {
-    box-sizing: border-box;
-  }
-
   & {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #1f2833;
-    color: white;
-    box-sizing: border-box;
-  }
-
-  .title {
-    width: 100%;
-    text-align: center;
-    border: transparent;
-  }
-
-  h1 {
-    margin: 5%;
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    margin: 2%;
-    text-align: center;
-  }
-
-  h3 {
-    font-size: 2.3rem;
   }
 
   .trailer-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    font-size: 2.5rem;
-    height: 40vh;
-    background-position: cover;
+    height: 650px;
     background-size: cover;
   }
 
-  iframe {
-    border: 4px solid white;
-    -moz-box-shadow: 5px 5px 40px black;
-    -webkit-box-shadow: 5px 5px 40px black;
-    box-shadow: 10px 10px 30px black;
-    width: 90%;
-    height: 70%;
+  .transparent {
+    background: gray;
+    height: 650px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .trailer-container > * {
+  .movie-image {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .information {
+    width: 60%;
+    margin: 2%;
+    color: white;
+    height: 600px;
+  }
+
+  .information > * {
     margin: 2%;
   }
 
-  .overview {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-  }
-
-  .overview > * {
-    margin: 3.5%;
+  h1 {
+    font-size: 5rem;
   }
 
   p {
-    overflow-x: auto;
-    line-height: 1.4;
+    font-size: 2rem;
+    line-height: 1.5;
+    letter-spacing: 0.2rem;
   }
 
-  .cast {
-    min-width: 40%;
-    margin: 1.5%;
-    text-align: center;
-    margin: 2%; 
+  span {
+    font-size: 3.5rem;
   }
+
+
+  .main-image {
+    width: 80%
+  }
+
+  h4 {
+    font-size: 3rem;
+  }
+
+  .icon {
+    border: none;
+    outline: none;
+    font-size: 2.5rem;
+  }
+
+
+  .to-trailer:hover {
+    cursor: pointer;
+    color: orange;
+    transition: ease-in 0.4s;
+  }
+
+  .green {
+    color: green;
+  }
+
+  //cast section
 
   .cast-container {
     display: flex;
-    overflow-y: hidden;
-    width: 100%;
-
+    overflow-x: auto;
+    margin: 2%;
+    color: white;
   }
 
-  img {
-    /* min-height: 70%; */
+  .cast-information {
+    width: 100%;
+  }
+
+  .cast-information > * {
+    margin: 2%;
+  }
+
+  .cast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 330px;
+    min-width: 200px; 
+    border: 4px solid gray;
     -moz-box-shadow: 5px 5px 40px black;
     -webkit-box-shadow: 5px 5px 40px black;
     box-shadow: 10px 10px 30px black;
-    border-radius: 5%;
+    margin: 0.5%;
+    text-align: center;
   }
 
-  .name {
+  .cast > * {
+    margin: 2%;
+  }
+
+  h3 {
+    text-align: center;
+    color: white;
+    font-size: 5rem;
+  }
+
+  .actor {
+    height: 200px;
+  }
+
+  h2 {
+    min-height: 40px;
+  }
+
+  div::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: orange;
+  }
+
+  // trailer section
+
+  .teaser-container {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    min-height: 27%;
-    background: white;
-    color: black;
-    border-radius: 5%;
-  }
-
-  .failed {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .provider-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+    height: 900px;
     width: 100%;
   }
 
-  .provider-container > * {
-    margin: 3%;
+  .teaser-container > * {
+    margin: 1.5%;
   }
 
-  .providers {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  iframe {
+    border: 10px solid gray;
+    -moz-box-shadow: 5px 5px 40px black;
+    -webkit-box-shadow: 5px 5px 40px black;
+    box-shadow: 10px 10px 30px black;
+    height: 800px;
+    width: 70%;
   }
 
-  .provider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 15rem;
-    height: 15rem;
+  .text {
+    font-size: 5rem;
+    color: orange;
   }
 
-  .space {
-    height: 4vh; 
+  .to-trailer {
+    color: white;
+    font-size: 3rem; 
   }
+
+
+
+
+
+
+
+  @media (max-width: 800px){
+    h1 {
+      font-size: 3rem; 
+    }
+
+    p {
+      width: 100%; 
+      font-size: 1.7rem; 
+      letter-spacing: .1rem; 
+      line-height: 1.1;
+      overflow-y: auto; 
+      min-height: 100px;   
+    }
+
+    h4 {
+      font-size: 2.5rem; 
+    }
+
+    span {
+  
+      font-size: 2.5rem; 
+    }
+
+    .information {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      flex-direction: column; 
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 4rem; 
+    }
+
+
+    iframe {
+      width: 90%; 
+      height: 550px; 
+    }
+  }
+
+  @media (max-width: 500px){
+
+    .trailer-container {
+      height: 650px;
+      background-size: cover;
+    }
+
+
+    .transparent {
+      display: flex; 
+      justify-content: space-evenly; 
+      align-items: center; 
+      flex-direction: column;
+      height: 650px;  
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .information {
+      display: flex; 
+      justify-content: space-evenly; 
+      align-items: center; 
+      flex-direction: column; 
+      text-align: center; 
+      width: 100%; 
+      height: 300px; 
+    }
+
+
+    .movie-image {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      margin: 1%; 
+      width: 60%; 
+      /* height: 200px;  */
+    }
+
+    .main-image {
+      height: 100%;
+      width: 80%; 
+    }
+
+    h1 {
+      font-size: 2.8rem; 
+    }
+
+    span {
+      font-size: 2.2rem; 
+    }
+
+    h4 {
+      font-size: 2rem; 
+    }
+
+    .to-trailer {
+      font-size: 2rem; 
+    }
+
+    .icon {
+      font-size: 1.6rem; 
+    }
+    
+    p {
+      width: 100%; 
+      font-size: 1.7rem; 
+      letter-spacing: .1rem; 
+      line-height: 1.1;
+      overflow-y: auto; 
+      min-height: 100px;
+    }
+
+    h3 {
+      font-size: 3.5rem;     
+    }
+
+    iframe {
+
+      border: 3px solid gray; 
+      width: 95%; 
+      height: 400px; 
+    }
+
+    .cast-information > * {
+      margin: 4%
+    }
+
+    .teaser-container > * {
+      margin: 4%
+    }
+
+    .teaser-container {
+      height: 600px; 
+    }
+  }
+
 `;
 
 const WatchTrailerv2 = ({ trailerId, currentMovie, cast, providers }) => {
@@ -160,17 +330,12 @@ const WatchTrailerv2 = ({ trailerId, currentMovie, cast, providers }) => {
     backgroundImage: `url(${`https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}`})`,
   };
 
-  const title = !currentMovie.original_name
-    ? currentMovie.original_title
-    : currentMovie.original_name;
-  const releaseDate = currentMovie.release_date
-    ? `(${currentMovie.release_date.split("-")[0]})`
-    : "";
-  let type, filteredCast, renderedCast, providerImages, renderedProviderImages;
+ 
+ const title = currentMovie.original_name || currentMovie.original_title || currentMovie.title; 
+ 
+ let renderedCast, filteredCast; 
 
   if (cast) {
-    type = currentMovie.media_type === "tv" ? "(Tv Show)" : "(Movie)";
-
     // some cast do not have pics of themselves, so we filter these out
     filteredCast = cast.filter((cur) => cur.profile_path !== null);
 
@@ -179,56 +344,13 @@ const WatchTrailerv2 = ({ trailerId, currentMovie, cast, providers }) => {
       return (
         <div className="cast" key={cur.id}>
           <img
+            className="actor"
             src={`https://image.tmdb.org/t/p/original${cur.profile_path}`}
-            alt={cur.name}
+            alt={cur.title || cur.original_title || cur.name}
           />
-          <div className="name">
-            <h2>{cur.name}</h2>
-            <h2>{cur.character}</h2>
-          </div>
-        </div>
-      );
-    });
-  }
 
-  /*   if (providers !== undefined) {
-    if (providers.US !== undefined) {
-      if (providers.US.flatrate !== undefined) {
-        providerImages = providers.US.flatrate;
-
-        renderedProviderImages = providerImages.map((cur) => {
-          return (
-            <div className="providers">
-              <div className="provider">
-                <img
-                  className="provider-image"
-                  src={`https://image.tmdb.org/t/p/original${cur.logo_path}`}
-                  alt={cur.provider_name}
-                />
-                <h2 className="provider-name">{cur.provider_name}</h2>
-              </div>
-            </div>
-          );
-        });
-      }
-    }
-  } */
-
-  if (providers && providers.US && providers.US.flatrate) {
-    providerImages = providers.US.flatrate;
-    
-
-    renderedProviderImages = providerImages.map((cur) => {
-      return (
-        <div className="providers">
-          <div className="provider">
-            <img
-              className="provider-image"
-              src={`https://image.tmdb.org/t/p/original${cur.logo_path}`}
-              alt={cur.provider_name}
-            />
-            <h2 className="provider-name">{cur.provider_name}</h2>
-          </div>
+          <h2 className="name">{cur.name}</h2>
+          <h2>{cur.character}</h2>
         </div>
       );
     });
@@ -236,45 +358,92 @@ const WatchTrailerv2 = ({ trailerId, currentMovie, cast, providers }) => {
 
   return (
     <StyledWatchTrailerv2>
-      <div className="title">
-        <h1>
-          {title} Official Trailer {releaseDate}
-          {type}{" "}
-        </h1>
-      </div>
-      <div className="trailer-container" style={style}>
+      <motion.div
+        className="trailer-container"
+        style={style}
+        exit={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <div className="transparent">
+          <div className="movie-image">
+            <img className="main-image"
+              src={`https://image.tmdb.org/t/p/w500/${currentMovie.poster_path}`}
+              alt="example"
+            />
+          </div>
+          <div className="information">
+            <h1>
+              {currentMovie.name ||
+                currentMovie.original_name ||
+                currentMovie.title}{" "}
+              {currentMovie.media_type
+                ? `(${currentMovie.media_type.toUpperCase()})`
+                : ""}
+            </h1>
+            <span>Description</span>
+            <p>
+             {currentMovie.overview}
+            </p>
+            <h4>
+              Rating:{" "}
+              <span
+                className={`rating ${
+                  currentMovie.vote_average > 7.9 ? "green" : ""
+                }`}
+              >
+                {currentMovie.vote_average}
+              </span>{" "}
+              / 10
+            </h4>
+            <h4>
+              Date Released:{" "}
+              {currentMovie.release_date || currentMovie.first_air_date}{" "}
+            </h4>
+            
+            <Link to="Trailer" smooth={true} className="to-trailer">
+              <FaPlay className="icon" /> Check Trailer
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+      {cast ? (
+        <motion.div
+          className="cast-information"
+          exit={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <h3>Top Cast</h3>
+          <div className="cast-container">{renderedCast}</div>
+          <hr></hr>
+        </motion.div>
+      ) : (
+        ""
+      )}
+
+      <motion.div id="Trailer" smooth={true}
+        className="teaser-container"
+        exit={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <h3>
+          {currentMovie.name ||
+            currentMovie.original_name ||
+            currentMovie.title}{" "}
+          <span className="text">Trailer</span>{" "}
+        </h3>
         <iframe
           title={title}
           allowFullScreen
           src={`https://www.youtube.com/embed/${trailerId}`}
+          className="trailer"
         />
-      </div>
-      <div className="overview">
-        <h3>Overview:</h3>
-        <p>{currentMovie.overview}</p>
-      </div>
-      <h3>Cast: </h3>
-      <div className="cast-container">
-        {cast === undefined ? (
-          <div className="failed">
-            <h2>No cast available! Try again later.</h2>
-          </div>
-        ) : (
-          renderedCast
-        )}
-      </div>
-      <div className="space"></div>
-      {providers  && providers.US && providers.US.flatrate ? (
-        <div>
-          {" "}
-          <h3>Available On: </h3>
-          <div className="provider-container">
-            {renderedProviderImages ? renderedProviderImages : ""}
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
+      </motion.div>
     </StyledWatchTrailerv2>
   );
 };
@@ -289,43 +458,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(WatchTrailerv2);
-
-/* const providers = {
-    AT: {
-      link: 'hhtljs.com', 
-      buy: [1, 2, 3, 4, 5, 6]
-    },
-    
-    DE: {
-      link: 'hhtljs.com', 
-      buy: [1, 2, 3, 4, 5, 6]
-    },
-    
-    NO: {
-      link: 'hhtljs.com', 
-      buy: [1, 2, 3, 4, 5, 6]
-    },
-    
-    US: {
-      link: 'hhtljs.com', 
-      buy: [1, 2, 3, 4, 5, 6],
-      flatrate: [{
-        logo_path: 'flag found', 
-      } ,6 ,7 ,8 ,8]
-    },
-    
-    SE: {
-      link: 'hhtljs.com', 
-      buy: [1, 2, 3, 4, 5, 6]
-    },
-  }
-  
-  const ex = Object.values(providers); 
-  
-  
-  
-  const be = ex.filter(cur => cur.hasOwnProperty('flatrate') === true); 
-  
-  console.log(be) */
-
-// continue expanding on providers ?

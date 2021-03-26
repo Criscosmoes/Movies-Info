@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import styled from "styled-components";
+import Aos from 'aos'; 
+import { motion } from 'framer-motion'; 
 
 
 import { Link } from 'react-router-dom'; 
@@ -9,45 +11,24 @@ import { flipCard, fetchTrailers, exampleTrailers } from "../actions";
 import { connect } from "react-redux";
 
 const StyledHomePageContent = styled.div`
-  .scene {
-    min-width: 46.5%;
-    height: 33rem;
-    margin: 1%;
+
+
+  & {
+    color: gray;
+    font-family: 'montserrat', sans-serif;
   }
 
-  .card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: transform 1s;
-    transform-style: preserve-3d;
+
+  .big-container > * {
+    margin: 2%;  
   }
 
-  .card__face {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    backface-visibility: hidden;
-  }
 
-  .card__face--front {
-    border: 4px solid white;
-    -moz-box-shadow: 5px 5px 40px black;
-    -webkit-box-shadow: 5px 5px 40px black;
-    box-shadow: 10px 10px 30px black;
-    
-  }
-
-  .card__face--back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transform: rotateY(180deg);
-  }
-
-  .card.is-flipped {
-    transform: rotateY(180deg);
+  h1 {
+    font-size: 6rem; 
+    text-align: center; 
+    color: white; 
+    font-weight: bolder; 
   }
 
   .container {
@@ -56,80 +37,104 @@ const StyledHomePageContent = styled.div`
     overflow-y: hidden;
   }
 
-  .card__face--front img {
+  h2 {
+    font-size: 1.7rem; 
+    margin: 3% 0%;
   }
 
-  .info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    height: 25%;
+  .movie {
+    margin: 1%;
+    cursor: pointer;
   }
 
-  .title {
-    text-align: center;
-    font-size: 1.5rem;  
+  .movie:hover {
+    color: white; 
   }
+
 
   img {
-    width: 100%;
-    height: 75%;
+    min-width: 300px; 
+    transition: ease-out .3s; 
   }
 
-  h3 {
-    font-size: 1.2rem;
+  img:hover {
+
+    transform: scale(1.05);
+    cursor: pointer;
+    border: 4px solid orange; 
   }
 
-  h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin: 3%;
+
+
+  div::-webkit-scrollbar {
+    width: 1rem;
+ 
   }
 
-  p {
-    font-size: 1.8rem;
-    font-weight: bold;
-    overflow-x: auto;
-    max-height: 100%;
+  div::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: orange;
+  }
+
+  @media (max-width: 800px){
+
+
+    h1 {
+      font-size: 4rem; 
+    }
+
+    .big-container > * {
+      margin: 4%
+    }
+
+  }
+
+  @media (max-width: 500px){
+
+    h1 {
+      font-size: 3rem; 
+    }
+
+
   }
 
 `;
 
 const HomePageContent = ({ movies, title, flipCard, exampleTrailers }) => {
+
+
+  useEffect(() => {
+    Aos.init({duration: 1500})
+  }, [])
+
   const filteredList = movies.filter((cur) => cur.poster_path !== null);
 
   const moviesList = filteredList.map((cur) => {
+
     return (
-      <div key={cur.id} className="scene">
-        <div onClick={flipCard} className="card">
-          <div className="card__face card__face--front">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${cur.poster_path}`}
-              alt={cur.title}
-            />
-            <div className="info">
-              <h3 className="title">{cur.title || cur.original_title || cur.name}</h3>
-              <h3>
-                Rating:{" "}
-                {`${cur.vote_average}  ${cur.vote_average > 7.5 ? "🔥" : ""}`}
-              </h3>
-              <Link to={`/movie/${cur.id}`}><button onClick={() => exampleTrailers(cur.id, cur)}>Watch Trailer</button></Link>
-            </div>
-          </div>
-          <div className="card__face card__face--back">
-            <p>{cur.overview}</p>
-          </div>
-        </div>
+      <div className="movie" onClick={() => exampleTrailers(cur.id, cur)}>
+        
+        <Link  to={`/movie/${cur.id}`}><img src={`https://image.tmdb.org/t/p/w500/${cur.poster_path}`} alt={cur.title || cur.original_title || cur.name} /></Link>
+        <h2>{cur.title || cur.original_title || cur.name}</h2>
       </div>
-    );
-  });
+    )
+  })
+
 
   return (
     <StyledHomePageContent>
-      <h2>{title}</h2>
+      <motion.div className="big-container" exit={{ opacity: 1}} animate={{opacity: 1}} initial={{ opacity: 0}} duration={4000} >
+        <h1 data-aos="flip-up" data-aos-duration={2500}>{title}</h1>
 
-      <div className="container">{moviesList}</div>
+        <div className="container">{moviesList}</div>
+
+        <hr></hr>
+      </motion.div>
     </StyledHomePageContent>
   );
 };
