@@ -100,6 +100,12 @@ const StyledHomePageContent = styled.div`
       font-size: 3rem; 
     }
 
+    img:hover {
+
+      transform: scale(0);
+      cursor: pointer;
+    }
+
 
   }
 

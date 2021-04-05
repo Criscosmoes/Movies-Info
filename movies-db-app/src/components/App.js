@@ -43,28 +43,33 @@ const App = ({movies, fetchMovies}) => {
 
                 <Route path="/popular" >
                     <NavBar /> 
-                    <Search movies={movies.popular} /> 
+                    <Search movies={movies.popular} />
+                    <Footer />
                 </Route>
 
                 <Route path="/now_playing" >
                     <NavBar /> 
-                    <Search movies={movies.now_playing} /> 
+                    <Search movies={movies.now_playing} />
+                    <Footer />
                     
                 </Route>
 
                 <Route path="/upcoming" >
                     <NavBar /> 
                     <Search movies={movies.upcoming} />
+                    <Footer />
                 </Route>
 
                 <Route path="/movie/:id">
                     <NavBar /> 
-                    <WatchTrailerv2 /> 
+                    <WatchTrailerv2 />
+                    <Footer />
                 </Route>
 
                 <Route path="/search/:search">
                     <NavBar /> 
-                    <Search movies={movies.search} /> 
+                    <Search movies={movies.search} />
+                    <Footer /> 
                     
                 </Route>
             </Switch>
