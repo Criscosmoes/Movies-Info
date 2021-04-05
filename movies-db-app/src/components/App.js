@@ -4,13 +4,15 @@ import '../App.css';
 import NavBar from './NavBar';
 import HomePage from './HomePage';
 import Search from './Search';
-import WatchTrailerv2 from './WatchTrailerv2'; 
+import WatchTrailerv2 from './WatchTrailerv2';
+import Footer from './Footer';
 
 import { Switch, Route } from 'react-router-dom'; 
 
 
 import { fetchMovies } from './../actions/index';
 import { connect } from 'react-redux'; 
+
 
 
 
@@ -36,6 +38,7 @@ const App = ({movies, fetchMovies}) => {
                 <Route path="/" exact>
                     <NavBar /> 
                     {<HomePage trending={movies.trending} topRated={movies.topRated} trendingToday={movies.trendingToday} />}
+                    <Footer />
                 </Route>
 
                 <Route path="/popular" >

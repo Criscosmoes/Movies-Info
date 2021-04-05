@@ -23,14 +23,6 @@ import { Link } from "react-router-dom";
 
 
 const StyledNavBar = styled.div`
-  /* & {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 65px;
-    color: lightgray;
-    border-bottom: .5px solid gray; 
-  } */
 
   .big-container {
     display: flex;

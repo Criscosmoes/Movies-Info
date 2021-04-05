@@ -211,13 +211,6 @@ const StyledSearch = styled.div`
   }
 
 
-
-    
-
-
-
-  }
-
 `;
 
 const Search = ({ movies, exampleTrailers, isLoading }) => {
