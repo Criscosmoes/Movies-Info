@@ -104,6 +104,7 @@ const StyledHomePageContent = styled.div`
 
       transform: none; 
       cursor: pointer;
+      border: none; 
     }
 
 
