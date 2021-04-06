@@ -292,12 +292,9 @@ const StyledNavBar = styled.div`
 
 const NavBar = ({
   switchOpen,
-  searchOpen,
-  switchSearch,
   onInputChange,
   term,
   fetchMovies,
-  clearFields,
 }) => {
   const [isOpen, setisOpen] = useState(true);
   const [isWidth, setisWidth] = useState(false);

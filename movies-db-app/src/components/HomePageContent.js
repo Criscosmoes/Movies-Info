@@ -112,7 +112,7 @@ const StyledHomePageContent = styled.div`
 
 `;
 
-const HomePageContent = ({ movies, title, flipCard, exampleTrailers }) => {
+const HomePageContent = ({ movies, title, exampleTrailers }) => {
 
 
   useEffect(() => {
