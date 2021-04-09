@@ -69,8 +69,6 @@ const App = ({movies, fetchMovies}) => {
                 <Route path="/search/:search">
                     <NavBar /> 
                     <Search movies={movies.search} />
-                    <Footer /> 
-                    
                 </Route>
             </Switch>
         </div>
