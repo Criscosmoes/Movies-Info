@@ -15,8 +15,8 @@ import { connect } from "react-redux";
 const App = ({ movies, fetchMovies }) => {
   useEffect(() => {
     fetchMovies("top rated", "movie/top_rated");
-    fetchMovies("trending", "trending/all/week");
-    fetchMovies("trendingToday", "trending/all/day");
+    fetchMovies("trending", "trending/movie/week");
+    fetchMovies("trendingToday", "trending/movie/day");
     fetchMovies("popular", "movie/popular");
     fetchMovies("now_playing", "movie/now_playing");
     fetchMovies("upcoming", "movie/upcoming");
@@ -27,13 +27,13 @@ const App = ({ movies, fetchMovies }) => {
       <Switch>
         <Route path="/" exact>
           <NavBar />
-          {
-            <HomePage
-              trending={movies.trending}
-              topRated={movies.topRated}
-              trendingToday={movies.trendingToday}
-            />
-          }
+
+          <HomePage
+            trending={movies.trending}
+            topRated={movies.topRated}
+            trendingToday={movies.trendingToday}
+          />
+
           <Footer />
         </Route>
 
